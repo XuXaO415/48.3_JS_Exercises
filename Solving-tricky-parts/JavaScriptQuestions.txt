@@ -1,0 +1,43 @@
+1. What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? How can this pitfall be avoided?
+
+Answer: The "typeof" operator indicates what type value of an operand. In the case of "typeof bar", typeof will evaluate "bar" as an object
+and will treat the above code as true. Keep in mind that the above code can still return false if "bar" is a function.
+To avoid encountering any complications, you can check by doing something like this:
+
+console.log(type !== null) && ((typeof bar === "object) || (typeof bar === "function"))); //this should return true
+
+/* definitely check this out:
+https://www.toptal.com/javascript/interview-questions 
+https://www.designmycodes.com/javascript/javascript-tricky.html
+https://www.designmycodes.com/javascript/javascript-interview-questions.html
+*/
+
+
+
+
+
+
+2. (function(){
+  var a = b = 3;
+})();
+
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+
+Answer: 
+
+3. var myObject = {
+    foo: "bar",
+    func: function() {
+        var self = this;
+        console.log("outer func:  this.foo = " + this.foo);
+        console.log("outer func:  self.foo = " + self.foo);
+        (function() {
+            console.log("inner func:  this.foo = " + this.foo);
+            console.log("inner func:  self.foo = " + self.foo);
+        }());
+    }
+};
+myObject.func();
+
+
